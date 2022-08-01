@@ -1,11 +1,19 @@
-import { greet } from "./utils/greet";
-import episodes from './episodes.json'
+import { EpisodeCard } from "./EpisodeCard";
+import episodes from "./episodes.json";
+import { Footer } from "./Footer";
+import "./App.css";
 
 console.log(`Imported ${episodes.length} episode(s)`);
 console.log(`First episode's name is ${episodes[0].name}`);
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
-  
+  return (
+    <>
+      <section className="episode-cards">
+        <div className="flex-box">{episodes.map(EpisodeCard)}</div>
+      </section>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
