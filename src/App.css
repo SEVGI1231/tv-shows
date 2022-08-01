@@ -1,0 +1,23 @@
+.episode-card {
+  border: 2px solid blue;
+  width: 300px;
+  margin: 20px;
+  padding: 5px;
+}
+.episode-card h3 {
+  border: 2px solid pink;
+  margin: 2px auto;
+  border-radius: 5px;
+  width: fit-content;
+  text-align: center;
+}
+.episode-cards {
+  text-align: center;
+}
+.flex-box {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -3,7 +3,7 @@ import { episodeCode } from "./utils/episodeCode";
 
 export function EpisodeCard(episode: IEpisode): JSX.Element {
   return (
-    <div key={episode.id}>
+    <div className="episode-card" key={episode.id}>
       <h3>
         {episode.name}-S{episodeCode(episode.season)}E
         {episodeCode(episode.number)}
