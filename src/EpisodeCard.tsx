@@ -1,5 +1,6 @@
 import { IEpisode } from "./types";
 import { episodeCode } from "./utils/episodeCode";
+import { pTagRemoval } from "./utils/pTagRemoval";
 
 export function EpisodeCard(episode: IEpisode): JSX.Element {
   return (
@@ -9,7 +10,7 @@ export function EpisodeCard(episode: IEpisode): JSX.Element {
         {episodeCode(episode.number)}
       </h3>
       <img src={episode.image.medium} alt="snapshot of the episode" />
-      <p>{episode.summary}</p>
+      <p>{pTagRemoval(episode.summary)}</p>
     </div>
   );
 }
