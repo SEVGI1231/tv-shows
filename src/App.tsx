@@ -6,8 +6,8 @@ import { searchBoxFunc } from "./utils/searchBoxFunc";
 import { IEpisode } from "./types";
 import shows from "./shows.json";
 import { SelectShow } from "./components/SelectShow";
-import {SelectEpisode} from "./components/SelectEpisode"
-import {getSelectedEpisodeOrSearchedEpisodes} from "./utils/getSelectedEpisodeOrSearchedEpisodes"
+import { SelectEpisode } from "./components/SelectEpisode";
+import { getSelectedEpisodeOrSearchedEpisodes } from "./utils/getSelectedEpisodeOrSearchedEpisodes";
 
 function App(): JSX.Element {
   const [showID, setShowID] = useState<number>(shows[0].id);
@@ -29,40 +29,35 @@ function App(): JSX.Element {
   const searchedEpisodes = searchBoxFunc(searchTerm, episodes);
 
   const [episodeID, setEpisodeID] = useState<number | null>(null);
-  
+
   const displayedEpisodesData = getSelectedEpisodeOrSearchedEpisodes(
     episodeID,
     searchedEpisodes
   );
-  
+
   return (
     <>
-    <section className="search-section">
-      
+      <section className="search-section">
         <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
-      
-      
-        <SelectEpisode 
-        setEpisodeID = {setEpisodeID}
-        episodeID = {episodeID}
-        searchedEpisodes = {searchedEpisodes}
-        episodes = {episodes}
-      />
-      
-    
-      <input
+
+        <SelectEpisode
+          setEpisodeID={setEpisodeID}
+          episodeID={episodeID}
+          searchedEpisodes={searchedEpisodes}
+          episodes={episodes}
+        />
+
+        <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="search here..."
         ></input>
-      <span>
-        Displaying {searchedEpisodes.length} out of {episodes.length}
-      </span>
-    
-      
-    </section>
-      
+        <span>
+          Displaying {searchedEpisodes.length} out of {episodes.length}
+        </span>
+      </section>
+
       <section className="episode-cards">
         <div className="flex-box">{displayedEpisodesData.map(EpisodeCard)}</div>
       </section>
