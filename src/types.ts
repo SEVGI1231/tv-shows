@@ -9,10 +9,25 @@ export interface IEpisode {
   airtime: string;
   airstamp: string;
   runtime: number;
-  image: {
+  image: null | {
     medium: string;
     original: string;
   };
-  summary: string;
+  summary: null | string;
   _links: { self: { href: string } };
+}
+
+export interface IShow {
+  name: string;
+  id: number;
+  summary: string;
+  genres: string[];
+  status: string;
+  image: {
+    medium: string;
+  };
+  rating: {
+    average: null | number;
+  };
+  runtime: null | number;
 }
