@@ -1,69 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { EpisodeCard } from "./components/EpisodeCard";
-import { Footer } from "./components/Footer";
+import { useState } from "react";
 import "./App.css";
-import { searchBoxFunc } from "./utils/searchBoxFunc";
-import { IEpisode } from "./types";
+import { ListOfEpisodes } from "./components/ListOfEpisodes";
+import { ListOfShows } from "./components/ListOfShows";
 import shows from "./shows.json";
 import { SelectShow } from "./components/SelectShow";
-import { SelectEpisode } from "./components/SelectEpisode";
-import { getSelectedEpisodeOrSearchedEpisodes } from "./utils/getSelectedEpisodeOrSearchedEpisodes";
 
-function App(): JSX.Element {
-  const [showID, setShowID] = useState<number>(shows[0].id);
-
-  const [episodes, setEpisodes] = useState<IEpisode[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://api.tvmaze.com/shows/${showID}/episodes`
-      );
-      const episodes: IEpisode[] = await response.json();
-
-      setEpisodes(episodes);
-    };
-    fetchData();
-  }, [showID]);
-
+export default function App(): JSX.Element {
+  const [showID, setShowID] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const searchedEpisodes = searchBoxFunc(searchTerm, episodes);
-
-  const [episodeID, setEpisodeID] = useState<number | null>(null);
-
-  const displayedEpisodesData = getSelectedEpisodeOrSearchedEpisodes(
-    episodeID,
-    searchedEpisodes
-  );
-
   return (
     <>
-      <section className="search-section">
-        <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
-
-        <SelectEpisode
-          setEpisodeID={setEpisodeID}
-          episodeID={episodeID}
-          searchedEpisodes={searchedEpisodes}
-          episodes={episodes}
+      {showID !== null && (
+        <ListOfEpisodes
+          iSearchTerm={{ searchTerm, setSearchTerm }}
+          iSelectShows={{ showID, setShowID, shows }}
         />
+      )}
+      <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
 
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="search here..."
-        ></input>
-        <span>
-          Displaying {searchedEpisodes.length} out of {episodes.length}
-        </span>
-      </section>
-
-      <section className="episode-cards">
-        <div className="flex-box">{displayedEpisodesData.map(EpisodeCard)}</div>
-      </section>
-      <Footer />
+      {showID === null && (
+        <ListOfShows
+          iSearchTerm={{ searchTerm, setSearchTerm }}
+          iSelectShows={{ showID, setShowID, shows }}
+        />
+      )}
     </>
   );
 }
-
-export default App;
