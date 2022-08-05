@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { EpisodeCard } from "./EpisodeCard";
 import { Footer } from "./Footer";
-import { searchBoxFunc } from "../utils/searchBoxFunc";
-import { IEpisode } from "../types";
-import shows from "../shows.json";
-import { SelectShow } from "./SelectShow";
+import { episodeSearchBoxFunc } from "../utils/episodeSearchBoxFunc";
+import { IEpisode, ISelectShows, ISearchTerm} from "../types";
+import { SelectShow} from "./SelectShow";
 import { SelectEpisode } from "./SelectEpisode";
 import { getSelectedEpisodeOrSearchedEpisodes } from "../utils/getSelectedEpisodeOrSearchedEpisodes";
+import { SearchBox } from "./SearchBox";
+//import { SearchBox } from "./SearchBox";
 
-export function ListOfEpisodes(): JSX.Element {
-  const [showID, setShowID] = useState<number>(shows[0].id);
+interface IListOfEpisodes {
+  iSelectShows: ISelectShows
+  iSearchTerm : ISearchTerm
+}
+export function ListOfEpisodes({iSelectShows :{setShowID,showID,shows},iSearchTerm:{searchTerm,setSearchTerm}}:IListOfEpisodes): JSX.Element {
 
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
   useEffect(() => {
@@ -24,8 +28,8 @@ export function ListOfEpisodes(): JSX.Element {
     fetchData();
   }, [showID]);
 
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const searchedEpisodes = searchBoxFunc(searchTerm, episodes);
+
+  const searchedEpisodes = episodeSearchBoxFunc(searchTerm, episodes);
 
   const [episodeID, setEpisodeID] = useState<number | null>(null);
 
@@ -45,13 +49,8 @@ export function ListOfEpisodes(): JSX.Element {
           searchedEpisodes={searchedEpisodes}
           episodes={episodes}
         />
-
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="search here..."
-        ></input>
+        <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+       
         <span>
           Displaying {searchedEpisodes.length} out of {episodes.length}
         </span>

@@ -31,3 +31,14 @@ export interface IShow {
   };
   runtime: null | number;
 }
+
+export interface ISelectShows {
+  setShowID: React.Dispatch<React.SetStateAction<number | null>>;
+  showID: number | null;
+  shows: IShow[];
+}
+
+export interface ISearchTerm {
+  searchTerm : string
+  setSearchTerm : React.Dispatch<React.SetStateAction<string>>
+}

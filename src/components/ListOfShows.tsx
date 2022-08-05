@@ -1,7 +1,22 @@
-import shows from "../shows.json";
+import { ISearchTerm, ISelectShows } from "../types";
+import { showSearchBoxFunc } from "../utils/showSearchBoxFunc";
+import { SearchBox } from "./SearchBox";
 import { ShowCard } from "./ShowCard";
 
-export function ListOfShows(): JSX.Element {
-  console.log("rendering list of shows");
-  return <>{shows.map(ShowCard)}</>;
+
+
+interface IListOfShows {
+    iSelectShows: ISelectShows
+    iSearchTerm : ISearchTerm
+  }
+
+
+export function ListOfShows({iSearchTerm :{searchTerm, setSearchTerm}, iSelectShows: {showID, setShowID, shows}}:IListOfShows): JSX.Element {  
+    const searchedShows = showSearchBoxFunc(searchTerm, shows)
+    return (
+    <>
+        <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+        {shows.map(ShowCard)}
+    </>
+    )
 }

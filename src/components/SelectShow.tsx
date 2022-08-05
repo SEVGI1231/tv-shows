@@ -1,17 +1,13 @@
 import { IShow } from "../types";
 import { sortShowsAlphabetically } from "../utils/sortShowsAlphabetically";
+import { ISelectShows } from "../types";
 
-interface SelectShows {
-  setShowID: React.Dispatch<React.SetStateAction<number>>;
-  showID: number | null;
-  shows: IShow[];
-}
 
 export function SelectShow({
   setShowID,
   showID,
   shows,
-}: SelectShows): JSX.Element {
+}: ISelectShows): JSX.Element {
   const alphabeticShowsList: IShow[] = shows.sort(sortShowsAlphabetically);
   function handleOnChangeShows(e: React.ChangeEvent<HTMLSelectElement>) {
     setShowID(parseInt(e.target.value));
