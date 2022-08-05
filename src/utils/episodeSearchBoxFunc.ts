@@ -1,9 +1,9 @@
-import { IEpisode} from "../types";
+import { IEpisode } from "../types";
 
 export function episodeSearchBoxFunc(
   searchTerm: string,
-  data: IEpisode[] 
-): IEpisode [] {
+  data: IEpisode[]
+): IEpisode[] {
   function callBackFunc(oneSetOfData: IEpisode): boolean {
     if (oneSetOfData.summary !== null) {
       return (

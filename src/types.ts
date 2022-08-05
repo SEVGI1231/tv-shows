@@ -39,6 +39,6 @@ export interface ISelectShows {
 }
 
 export interface ISearchTerm {
-  searchTerm : string
-  setSearchTerm : React.Dispatch<React.SetStateAction<string>>
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }

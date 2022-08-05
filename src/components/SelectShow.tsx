@@ -2,7 +2,6 @@ import { IShow } from "../types";
 import { sortShowsAlphabetically } from "../utils/sortShowsAlphabetically";
 import { ISelectShows } from "../types";
 
-
 export function SelectShow({
   setShowID,
   showID,

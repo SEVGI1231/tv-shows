@@ -1,9 +1,6 @@
-import {IShow} from "../types";
+import { IShow } from "../types";
 
-export function showSearchBoxFunc(
-  searchTerm: string,
-  data: IShow[] 
-): IShow [] {
+export function showSearchBoxFunc(searchTerm: string, data: IShow[]): IShow[] {
   function callBackFunc(oneSetOfData: IShow): boolean {
     if (oneSetOfData.summary !== null) {
       return (

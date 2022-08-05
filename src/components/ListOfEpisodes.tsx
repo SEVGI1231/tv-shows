@@ -2,19 +2,21 @@ import { useState, useEffect } from "react";
 import { EpisodeCard } from "./EpisodeCard";
 import { Footer } from "./Footer";
 import { episodeSearchBoxFunc } from "../utils/episodeSearchBoxFunc";
-import { IEpisode, ISelectShows, ISearchTerm} from "../types";
-import { SelectShow} from "./SelectShow";
+import { IEpisode, ISelectShows, ISearchTerm } from "../types";
+import { SelectShow } from "./SelectShow";
 import { SelectEpisode } from "./SelectEpisode";
 import { getSelectedEpisodeOrSearchedEpisodes } from "../utils/getSelectedEpisodeOrSearchedEpisodes";
 import { SearchBox } from "./SearchBox";
 //import { SearchBox } from "./SearchBox";
 
 interface IListOfEpisodes {
-  iSelectShows: ISelectShows
-  iSearchTerm : ISearchTerm
+  iSelectShows: ISelectShows;
+  iSearchTerm: ISearchTerm;
 }
-export function ListOfEpisodes({iSelectShows :{setShowID,showID,shows},iSearchTerm:{searchTerm,setSearchTerm}}:IListOfEpisodes): JSX.Element {
-
+export function ListOfEpisodes({
+  iSelectShows: { setShowID, showID, shows },
+  iSearchTerm: { searchTerm, setSearchTerm },
+}: IListOfEpisodes): JSX.Element {
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,6 @@ export function ListOfEpisodes({iSelectShows :{setShowID,showID,shows},iSearchTe
     };
     fetchData();
   }, [showID]);
-
 
   const searchedEpisodes = episodeSearchBoxFunc(searchTerm, episodes);
 
@@ -49,8 +50,8 @@ export function ListOfEpisodes({iSelectShows :{setShowID,showID,shows},iSearchTe
           searchedEpisodes={searchedEpisodes}
           episodes={episodes}
         />
-        <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-       
+        <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
         <span>
           Displaying {searchedEpisodes.length} out of {episodes.length}
         </span>
