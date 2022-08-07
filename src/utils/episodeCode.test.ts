@@ -13,7 +13,6 @@ test("episode card adds zero padding to one digit numbers", () => {
       airtime: "21:00",
       airstamp: "2011-04-18T01:00:00+00:00",
       runtime: 60,
-      rating: { average: 8.4 },
       image: {
         medium:
           "https://static.tvmaze.com/uploads/images/medium_landscape/1/2668.jpg",
@@ -37,7 +36,6 @@ test("episode card adds zero padding to one digit numbers", () => {
       airtime: "21:00",
       airstamp: "2011-04-25T01:00:00+00:00",
       runtime: 60,
-      rating: { average: 8.4 },
       image: {
         medium:
           "https://static.tvmaze.com/uploads/images/medium_landscape/1/2669.jpg",

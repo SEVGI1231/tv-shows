@@ -14,7 +14,6 @@ test("find the matching elements of the array to the string", () => {
         airtime: "21:00",
         airstamp: "2011-04-18T01:00:00+00:00",
         runtime: 60,
-        rating: { average: 8.4 },
         image: {
           medium:
             "https://static.tvmaze.com/uploads/images/medium_landscape/1/2668.jpg",
@@ -36,7 +35,6 @@ test("find the matching elements of the array to the string", () => {
         airtime: "21:00",
         airstamp: "2011-04-25T01:00:00+00:00",
         runtime: 60,
-        rating: { average: 8.4 },
         image: {
           medium:
             "https://static.tvmaze.com/uploads/images/medium_landscape/1/2669.jpg",
@@ -58,7 +56,6 @@ test("find the matching elements of the array to the string", () => {
         airtime: "21:00",
         airstamp: "2011-05-02T01:00:00+00:00",
         runtime: 60,
-        rating: { average: 8.3 },
         image: {
           medium:
             "https://static.tvmaze.com/uploads/images/medium_landscape/1/2671.jpg",
@@ -82,7 +79,6 @@ test("find the matching elements of the array to the string", () => {
       airtime: "21:00",
       airstamp: "2011-04-25T01:00:00+00:00",
       runtime: 60,
-      rating: { average: 8.4 },
       image: {
         medium:
           "https://static.tvmaze.com/uploads/images/medium_landscape/1/2669.jpg",
