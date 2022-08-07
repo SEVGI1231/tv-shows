@@ -51,14 +51,16 @@ select {
 footer {
   border-top: 5px solid black;
 }
-.showCard{
+.showCard {
   border: 3px solid black;
   padding: 60px 20px;
   width: 100%;
 }
-.showCard:not(:last-of-type){margin-bottom: 10px};
+.showCard:not(:last-of-type) {
+  margin-bottom: 10px;
+}
 
-.showCardInfo{
+.showCardInfo {
   float: right;
 }
 
