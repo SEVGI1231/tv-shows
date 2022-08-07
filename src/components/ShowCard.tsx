@@ -3,7 +3,7 @@ import { pTagRemoval } from "../utils/pTagRemoval";
 
 export function ShowCard(props: IShow): JSX.Element {
   return (
-    <div key={props.id}>
+    <div className="showCard" key={props.id}>
       <h2>{props.name}</h2>
       <div>
         {props.image !== null && (
@@ -11,7 +11,7 @@ export function ShowCard(props: IShow): JSX.Element {
         )}
         {props.summary !== null && <p>{pTagRemoval(props.summary)}</p>}
       </div>
-      <div>
+      <div className="showCardInfo">
         <ul>
           {props.rating.average !== null && (
             <li>Rated: {props.rating.average}</li>

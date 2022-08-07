@@ -16,7 +16,7 @@ export function ListOfShows({
   return (
     <>
       <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {searchedShows.map(ShowCard)}
+      <section className="listOfShows" >{searchedShows.map(ShowCard)}</section>
     </>
   );
 }
