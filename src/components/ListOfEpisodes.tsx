@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import { EpisodeCard } from "./EpisodeCard";
-import { Footer } from "./Footer";
 import { episodeSearchBoxFunc } from "../utils/episodeSearchBoxFunc";
-import { IEpisode, ISelectShows, ISearchTerm } from "../types";
-import { SelectShow } from "./SelectShow";
+import { IEpisode, ISearchTerm } from "../types";
 import { SelectEpisode } from "./SelectEpisode";
 import { getSelectedEpisodeOrSearchedEpisodes } from "../utils/getSelectedEpisodeOrSearchedEpisodes";
 import { SearchBox } from "./SearchBox";
 //import { SearchBox } from "./SearchBox";
 
 interface IListOfEpisodes {
-  iSelectShows: ISelectShows;
+  showID: number;
+  setShowID: React.Dispatch<React.SetStateAction<number | null>>;
   iSearchTerm: ISearchTerm;
 }
 export function ListOfEpisodes({
-  iSelectShows: { setShowID, showID, shows },
+  showID,
+  setShowID,
   iSearchTerm: { searchTerm, setSearchTerm },
 }: IListOfEpisodes): JSX.Element {
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
@@ -42,8 +42,6 @@ export function ListOfEpisodes({
   return (
     <>
       <section className="search-section">
-        <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
-
         <SelectEpisode
           setEpisodeID={setEpisodeID}
           episodeID={episodeID}
@@ -55,12 +53,12 @@ export function ListOfEpisodes({
         <span>
           Displaying {searchedEpisodes.length} out of {episodes.length}
         </span>
+        <button onClick={() => setShowID(null)}>Return to show list</button>
       </section>
 
       <section className="episode-cards">
         <div className="flex-box">{displayedEpisodesData.map(EpisodeCard)}</div>
       </section>
-      <Footer />
     </>
   );
 }

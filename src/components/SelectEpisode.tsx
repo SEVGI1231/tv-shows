@@ -1,5 +1,5 @@
 import { IEpisode } from "../types";
-import { episodeCode2 } from "../utils/episodeCode";
+import { episodeCode } from "../utils/episodeCode";
 
 interface SelectEpisodeProps {
   setEpisodeID: React.Dispatch<React.SetStateAction<number | null>>;
@@ -28,7 +28,7 @@ export function SelectEpisode({
           {episodes.map((episode: IEpisode, index) => {
             return (
               <option key={index} value={episode.id}>
-                {episodeCode2(episode)}-{episode.name}
+                {episodeCode(episode)}-{episode.name}
               </option>
             );
           })}

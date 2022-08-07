@@ -4,26 +4,30 @@ import { ListOfEpisodes } from "./components/ListOfEpisodes";
 import { ListOfShows } from "./components/ListOfShows";
 import shows from "./shows.json";
 import { SelectShow } from "./components/SelectShow";
+import { Footer } from "./components/Footer";
 
 export default function App(): JSX.Element {
   const [showID, setShowID] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   return (
     <>
+      <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
+
       {showID !== null && (
         <ListOfEpisodes
           iSearchTerm={{ searchTerm, setSearchTerm }}
-          iSelectShows={{ showID, setShowID, shows }}
+          showID={showID}
+          setShowID={setShowID}
         />
       )}
-      <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
 
       {showID === null && (
         <ListOfShows
           iSearchTerm={{ searchTerm, setSearchTerm }}
-          iSelectShows={{ showID, setShowID, shows }}
+          shows={shows}
         />
       )}
+      <Footer />
     </>
   );
 }

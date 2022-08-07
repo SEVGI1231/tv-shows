@@ -1,16 +1,16 @@
-import { ISearchTerm, ISelectShows } from "../types";
+import { ISearchTerm, IShow } from "../types";
 import { showSearchBoxFunc } from "../utils/showSearchBoxFunc";
 import { SearchBox } from "./SearchBox";
 import { ShowCard } from "./ShowCard";
 
 interface IListOfShows {
-  iSelectShows: ISelectShows;
+  shows: IShow[];
   iSearchTerm: ISearchTerm;
 }
 
 export function ListOfShows({
   iSearchTerm: { searchTerm, setSearchTerm },
-  iSelectShows: { showID, setShowID, shows },
+  shows,
 }: IListOfShows): JSX.Element {
   const searchedShows = showSearchBoxFunc(searchTerm, shows);
   return (

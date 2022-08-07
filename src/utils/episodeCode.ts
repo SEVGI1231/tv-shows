@@ -1,14 +1,6 @@
 import { IEpisode } from "../types";
 
-export function episodeCode(num: number): string {
-  if (num < 10) {
-    return `0${num}`;
-  } else {
-    return `${num}`;
-  }
-}
-
-export function episodeCode2(episode: IEpisode): string {
+export function episodeCode(episode: IEpisode): string {
   let seasonModified = `${episode.season};`;
   let numberModified = `${episode.number}`;
   if (episode.season < 10) {

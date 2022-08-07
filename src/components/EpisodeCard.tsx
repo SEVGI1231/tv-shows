@@ -6,8 +6,7 @@ export function EpisodeCard(episode: IEpisode): JSX.Element {
   return (
     <div className="episode-card" key={episode.id}>
       <h3>
-        {episode.name}-S{episodeCode(episode.season)}E
-        {episodeCode(episode.number)}
+        {episodeCode(episode)}-{episode.name}
       </h3>
       {episode.image !== null && (
         <img src={episode.image.medium} alt="snapshot of the episode" />
