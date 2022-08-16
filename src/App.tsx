@@ -11,8 +11,9 @@ export default function App(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
   return (
     <>
-      <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
-
+      
+        <SelectShow setShowID={setShowID} showID={showID} shows={shows} />
+      
       {showID !== null && (
         <ListOfEpisodes
           iSearchTerm={{ searchTerm, setSearchTerm }}

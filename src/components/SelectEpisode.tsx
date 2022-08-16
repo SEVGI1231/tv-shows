@@ -14,17 +14,19 @@ export function SelectEpisode({
   episodes,
 }: SelectEpisodeProps): JSX.Element {
   function handleOnChangeEpisodes(e: React.ChangeEvent<HTMLSelectElement>) {
-    setEpisodeID(parseInt(e.target.value));
-  }
-
-  function handleButtonClick() {
-    setEpisodeID(null);
+    if (e.target.value==="default"){
+      setEpisodeID(null)
+    }
+    else{
+      setEpisodeID(parseInt(e.target.value));
+      console.log(e.target.value)
+    }
   }
   return (
     <>
-      <label htmlFor="episode">
-        Select an episode
-        <select name="episode" id="episode" onChange={handleOnChangeEpisodes}>
+        <select name="episode" id="episode" 
+        onChange={handleOnChangeEpisodes}>
+          <option value="default">Select Episode</option>
           {episodes.map((episode: IEpisode, index) => {
             return (
               <option key={index} value={episode.id}>
@@ -33,8 +35,6 @@ export function SelectEpisode({
             );
           })}
         </select>
-      </label>
-      <button onClick={handleButtonClick}>Reset Selection</button>
     </>
   );
 }

@@ -31,14 +31,12 @@ export function ListOfEpisodes({
   }, [showID]);
 
   const searchedEpisodes = episodeSearchBoxFunc(searchTerm, episodes);
-
   const [episodeID, setEpisodeID] = useState<number | null>(null);
-
   const displayedEpisodesData = getSelectedEpisodeOrSearchedEpisodes(
     episodeID,
     searchedEpisodes
   );
-
+ 
   return (
     <>
       <section className="search-section">
@@ -50,14 +48,15 @@ export function ListOfEpisodes({
         />
         <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-        <span>
-          Displaying {searchedEpisodes.length} out of {episodes.length}
-        </span>
-        <button onClick={() => setShowID(null)}>Return to show list</button>
+       
       </section>
 
       <section className="episode-cards">
-        <div className="flex-box">{displayedEpisodesData.map(EpisodeCard)}</div>
+      <p className="display-amount">
+          Displaying {displayedEpisodesData.length} out of {episodes.length}
+      </p>
+        
+        <div className="episode-card">{displayedEpisodesData.map(EpisodeCard)}</div>
       </section>
     </>
   );

@@ -1,12 +1,37 @@
+body { 
+  margin: 0;   /* Remove body margins */
+}
 .search-section {
   padding: 40px 0px;
-}
+  background-color: #536878;
 
+  text-align: center;
+
+}
+.display-amount{
+  text-align: left;
+  border: solid 2px #536878;
+  width: fit-content;
+  padding: 7px;
+  background-color: #536878;
+  color: lightgrey;
+  border-radius: 10px;
+}
+.show-selection{
+  text-align: center;
+  background: #8ba0af;
+  padding: 20px;
+  
+}
 button {
   width: fit-content;
   height: 50px;
   background: lightgray;
   border: 3px black;
+  border-radius: 10px;
+}
+input{
+  padding: 10px;
 }
 
 select {
@@ -17,8 +42,11 @@ select {
   border: 3px black;
   margin-left: 10px;
   margin-right: 30px;
+  border-radius: 10px;
 }
-
+input{
+  border-radius: 10px;
+}
 .episode-card {
   border: 2px solid rgba(0, 0, 0, 0.284);
   border-radius: 10px;
@@ -38,23 +66,36 @@ select {
 .episode-cards {
   text-align: center;
   background: rgb(243, 247, 249);
-  padding: 100px 0;
+  padding: 30px 10px;
 }
-.flex-box {
+.episode-card {
   display: flex;
   text-align: center;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
+.listOfShows{
+  padding: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+}
 
 footer {
   border-top: 5px solid black;
 }
 .showCard {
+  
+  display: flex;
+}
+
+.showCardWithTitle {
+  text-align: center;
   border: 3px solid black;
   padding: 60px 20px;
-  width: 100%;
 }
 .showCard:not(:last-of-type) {
   margin-bottom: 10px;
